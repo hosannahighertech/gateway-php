@@ -2,7 +2,7 @@
 
 namespace hosannahighertech\gateway;
 
-use namespace hosannahighertech\gateway\interfaces\ConfigurationInterface;
+use hosannahighertech\gateway\interfaces\ConfigurationInterface;
 
 class PaymentRequest implements \JsonSerializable
 {

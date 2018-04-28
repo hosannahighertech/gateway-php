@@ -3,7 +3,7 @@
 
 namespace hosannahighertech\gateway\samples;
 
-use namespace hosannahighertech\gateway\interfaces\ConfigurationInterface;
+use hosannahighertech\gateway\interfaces\ConfigurationInterface;
 
 /**
  * Sample Configuration file
