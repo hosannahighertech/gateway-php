@@ -12,7 +12,7 @@
     "minimum-stability": "stable",
     "require": {},
     "autoload": {
-        "psr-0" : {
+        "psr-4" : {
             "hosannahighertech\\gateway\\" : "src"
         }
     }
