@@ -37,7 +37,6 @@ $gateway = new Gateway(new SampleConfigurations());
 
 The Gateway object can then be used for creating Payment requests and Confirming for Receipts.
 
-```
 ### 2. Sending Payment Request
 To create Payment request, just create an object of `PaymentRequest` class and then use gateway `sendRequest` method to send that. The method returns a `string` containing payment ID, upon success or a `false` upon failure. Use Gateway object's `getError` method to get the actual error message.
 
