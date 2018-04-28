@@ -1,0 +1,19 @@
+{
+    "name": "hosannahighertech/gateway-php",
+    "description": "Hosanna e-Payment Gateway API PHP library",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hosanna Higher Technologies Co. Ltd",
+            "email": "support@hosannahighertech.co.tz"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload": {
+        "psr-0" : {
+            "hosannahighertech\\gateway\\" : "src"
+        }
+    }
+}
