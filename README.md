@@ -69,7 +69,7 @@ To do that, just pass payment ID from `RequestReceipt` object you got from previ
 ```php
 
 $paymentReceipt = $gateway->confirmPayment($reqReceipt->getReceipt());
-if($paymentReceipt === false)
+if($paymentReceipt === null)
 {
 	echo $gateway->getError());
 }
