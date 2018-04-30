@@ -38,7 +38,7 @@ $gateway = new Gateway(new SampleConfigurations());
 The Gateway object can then be used for creating Payment requests and Confirming for Receipts.
 
 ### 2. Sending Payment Request
-To create Payment request, just create an object of `PaymentRequest` class and then use gateway `sendRequest` method to send that. The method returns a `string` containing payment ID, upon success or a `false` upon failure. Use Gateway object's `getError` method to get the actual error message.
+To create Payment request, just create an object of `PaymentRequest` class and then use gateway `sendRequest` method to send that. The method returns object of `RequestReceipt` containing, upon success or a `null` upon failure. Use Gateway object's `getError` method to get the actual error message.
 
 
 ```php
@@ -52,23 +52,23 @@ $request = $request->setCard('1234565432789054')
 				 ->setCompany(1)
 				 ->setTransferTo(1234567890987654);
 				 
-$paymentId = $gateway->sendRequest($request);
-if($paymentId === false)
+$reqReceipt = $gateway->sendRequest($request);
+if($reqReceipt === null)
 {
 	echo $gateway->getError());
 }
 else
 {
-	//succesfully. Do something with Payment ID
+	//succesfully. Do something with Request Receipt
 }
 ```
 ### 3. Confirming Payment
 Confirming Payment will do the actual deducting/transfer of the money. 
-To do that, just pass payment ID you got from previous request to `confirmPayment` method of the Gateway object. The result will be false in case of failure and an object of `PaymentReceipt` class in case of success. Use Gateway object's `getError` method to get the actual error message.
+To do that, just pass payment ID from `RequestReceipt` object you got from previous request, using `getReceipt()` method to `confirmPayment` method of the Gateway object. The result will be `null` in case of failure and an object of `PaymentReceipt` class in case of success. Use Gateway object's `getError` method to get the actual error message.
 
 ```php
 
-$paymentReceipt = $gateway->confirmPayment($paymentId);
+$paymentReceipt = $gateway->confirmPayment($reqReceipt->getReceipt());
 if($paymentReceipt === false)
 {
 	echo $gateway->getError());

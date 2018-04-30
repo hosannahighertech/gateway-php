@@ -25,8 +25,8 @@ class Gateway
     }
 
     /**
-     * Creates Payment Request
-     * Returns request number on success or false on failure
+     * Creates Payment Request Receipt
+     * Returns request object of `RequestReceipt` of data on success or null on failure
      * Check getLastError to get the error message
     */
     public function sendRequest(PaymentRequest $request)
@@ -39,7 +39,7 @@ class Gateway
         $json = json_decode($response->body, true);
 
         if(isset($json['success']) && $json['success'])
-            return intval($json['message']);
+            return new RequestReceipt($json['message']);
 
         else if(isset($json['message']) && is_string($json['message']))
             $this->_error = $json['message'];
@@ -52,7 +52,7 @@ class Gateway
                 $this->_error = 'Unknown Error have Occurred';
 
         }
-        return false;
+        return null;
     }
 
     /**
@@ -83,7 +83,7 @@ class Gateway
                 $this->_error = 'Unknown Error have Occurred';
 
         }
-        return false;
+        return null;
     }
 }
 
